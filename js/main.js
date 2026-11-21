@@ -1,6 +1,6 @@
 /* ==========================================================================
    CYBERPUNK HUD INTERACTION ENGINE - BRANDON NOBLE
-   Focus: 4th Year Cybersecurity Student // SOC Analyst Candidate
+   Focus: Cybersecurity Undergraduate & Technical Operative
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,17 +21,17 @@ function initTypewriter() {
     if (!target) return;
 
     const phrases = [
-        "4TH YEAR BSC CYBERSECURITY STUDENT (TUD)",
-        "ASPIRING SOC ANALYST // LOG TRIAGE & EVENT DETECTION",
-        "HANDS-ON BLUE TEAMING, KALI LINUX & PENTESTING",
-        "ACTIVE CTF COMPETITOR & CYBER CONFERENCE ATTENDEE",
-        "PURPLE TEAM MINDSET & SECURE SDLC AWARENESS"
+        "CYBERSECURITY UNDERGRADUATE // TU DUBLIN",
+        "HANDS-ON BLUE TEAMING, SIEM LOG CORRELATION & TRIAGE",
+        "PENTESTING LABS, KALI LINUX & PURPLE TEAMING",
+        "ACTIVE CTF COMPETITOR & INDUSTRY CONFERENCE ATTENDEE",
+        "FOUNDATIONAL SECURE SDLC (S-SDLC) AWARENESS"
     ];
 
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 50;
+    let typeSpeed = 48;
 
     function type() {
         const currentPhrase = phrases[phraseIndex];
@@ -39,11 +39,11 @@ function initTypewriter() {
         if (isDeleting) {
             target.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 25;
+            typeSpeed = 24;
         } else {
             target.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 50;
+            typeSpeed = 48;
         }
 
         if (!isDeleting && charIndex === currentPhrase.length) {
@@ -92,7 +92,7 @@ function initAudioSynthesizer() {
     });
 
     // Add sound effects to buttons and nav links
-    const interactiveElements = document.querySelectorAll('.cyber-btn, .nav-link, .channel-card, .term-quick-btn');
+    const interactiveElements = document.querySelectorAll('.cyber-btn, .nav-link, .channel-card');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             if (sfxEnabled) playBeep(520, 'square', 0.04, 0.03);
@@ -126,7 +126,7 @@ function playBeep(freq, type = 'sine', duration = 0.08, volume = 0.05) {
 }
 
 /* --------------------------------------------------------------------------
-   3. Interactive Cyber Terminal CLI - Defensive Operations Shell
+   3. Interactive Cyber Terminal CLI (Gracefully checks for DOM presence)
    -------------------------------------------------------------------------- */
 function initTerminal() {
     const form = document.getElementById('terminalForm');
@@ -135,114 +135,14 @@ function initTerminal() {
     const screen = document.getElementById('terminalScreen');
     if (!form || !input || !history || !screen) return;
 
-    const commands = {
-        help: () => `
-COMMANDS AVAILABLE:
-  - <span class="term-cmd-highlight">soc</span>        : Defensive mindset, log triage & monitoring
-  - <span class="term-cmd-highlight">skills</span>     : Core skills (Blue Team, Kali, S-SDLC, Pentesting)
-  - <span class="term-cmd-highlight">ctf</span>        : CTF participation & conference attendance
-  - <span class="term-cmd-highlight">projects</span>   : Practical home labs and research directives
-  - <span class="term-cmd-highlight">education</span>  : 4th year BSc Cybersecurity details
-  - <span class="term-cmd-highlight">contact</span>    : LinkedIn & confidential transmission portal
-  - <span class="term-cmd-highlight">hire</span>       : Target roles & availability status
-  - <span class="term-cmd-highlight">matrix</span>     : Trigger cyber optic matrix pulse
-  - <span class="term-cmd-highlight">clear</span>      : Wipe console buffer
-        `,
-        soc: () => `
-[SOC & DEFENSIVE PROFILE]
-• Objective    : Seeking Junior SOC Analyst / Security Analyst position
-• Focus Areas  : Log Correlation, SIEM (Splunk/Elastic), Alert Triage, Incident Response
-• Philosophy   : Grounded fundamentals, thorough log investigation, eager to learn from senior analysts
-        `,
-        skills: () => `
-[TECHNICAL SPECS: BRANDON NOBLE]
-• Defensive/SOC: SIEM Ingestion, Wireshark Packet Analysis, Sysmon, Event Triage, MITRE ATT&CK
-• Offensive/Lab: Kali Linux, Nmap, Burp Suite, Vulnerability Scanning, Red Team Concepts
-• Collaboration: Purple Teaming (Offense informing Defense), Secure SDLC Awareness, Python, Linux
-        `,
-        ctf: () => `
-[EXTRACURRICULAR & COMMUNITY INVOLVEMENT]
-• CTF Contests : Regular participant in Jeopardy & Attack-Defense challenges (TryHackMe, HTB, University)
-• Conferences  : Regular attendee at cybersecurity conferences and industry summits for latest threat intel
-• Curiosity    : Continually testing offensive tools in home lab to engineer better defensive rules
-        `,
-        projects: () => `
-[DEFENSIVE LABS & DIRECTIVES]
-1. SOC_LAB     - Virtualized SIEM environment parsing Sysmon & attack telemetry
-2. PCAP_TRIAGE - Forensic packet dissection of C2 beaconing and unauthorized scans
-3. SEC_AUDIT   - Web vulnerability assessment demonstrating S-SDLC preventative controls
-Inspect Section 03 or run 'contact'.
-        `,
-        education: () => `
-[ACADEMIC BACKGROUND]
-• Degree       : BSc (Hons) in Cybersecurity — 4th Year (Final Year Undergraduate)
-• Institution  : Technological University Dublin (TUD)
-• Key Modules  : Incident Management, Network Forensics, Secure Programming, Penetration Testing
-        `,
-        contact: () => `
-[SECURE CHANNELS]
-• LinkedIn     : <a href="https://www.linkedin.com/in/brandon-noble-cybersec" target="_blank" style="color:var(--neon-cyan)">linkedin.com/in/brandon-noble-cybersec</a>
-• GitHub       : <a href="https://github.com/TUDBrandon" target="_blank" style="color:var(--neon-cyan)">github.com/TUDBrandon</a>
-• Contact Form : Use Section 06 below to send a confidential message (protects privacy)
-• Resume       : <a href="assets/BrandonNoble_CV.pdf" download="BrandonNoble_CV.pdf" style="color:var(--neon-yellow)">[ Download BrandonNoble_CV.pdf ]</a>
-        `,
-        hire: () => `
-[RECRUITMENT STATUS]
-• Operative    : Brandon Noble (4th Year Cybersecurity Undergrad)
-• Target Roles : Junior SOC Analyst, Graduate Security Analyst, Cyber Defense Associate
-• Availability : Entry-level / Graduate deployment
-• Work Ethic   : High motivation, strong diagnostic curiosity, team-first purple mentality
-        `,
-        matrix: () => {
-            triggerMatrixFlash();
-            return `[OPTIC PULSE TRIGGERED] Defense grid visual sync re-calibrated.`;
-        },
-        clear: () => {
-            history.innerHTML = '';
-            return null;
-        }
-    };
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const rawCmd = input.value.trim();
-        if (!rawCmd) return;
-
-        const cmd = rawCmd.toLowerCase();
-        appendLine(`brandon@soc-analyst:~$ ${rawCmd}`, 'command');
-
-        if (commands[cmd]) {
-            const output = commands[cmd]();
-            if (output !== null) {
-                appendLine(output, 'result');
-            }
-        } else {
-            appendLine(`Command not recognized: '${rawCmd}'. Type <span class="term-cmd-highlight">'help'</span> for list of commands.`, 'error');
-        }
-
         input.value = '';
-        screen.scrollTop = screen.scrollHeight;
     });
-
-    // Preset command buttons
-    document.querySelectorAll('.term-quick-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const cmd = btn.getAttribute('data-cmd');
-            input.value = cmd;
-            form.dispatchEvent(new Event('submit'));
-        });
-    });
-
-    function appendLine(content, className) {
-        const line = document.createElement('div');
-        line.className = `term-line ${className}`;
-        line.innerHTML = content;
-        history.appendChild(line);
-    }
 }
 
 /* --------------------------------------------------------------------------
-   4. Confidential Contact Form Handler
+   4. Contact Form Handler (Name, Subject, Message)
    -------------------------------------------------------------------------- */
 function initContactForm() {
     const form = document.getElementById('contactForm');
@@ -254,35 +154,25 @@ function initContactForm() {
         e.preventDefault();
 
         const name = document.getElementById('senderName').value.trim();
-        const email = document.getElementById('senderEmail').value.trim();
         const subject = document.getElementById('messageSubject').value.trim();
         const message = document.getElementById('messageBody').value.trim();
 
-        if (!name || !email || !message) {
-            status.textContent = "[!] Please fill in all required fields.";
+        if (!name || !subject || !message) {
+            status.textContent = "[!] Please fill in all fields (Name, Subject, Message).";
             status.className = "form-status error";
             return;
         }
 
         sendBtn.disabled = true;
-        status.textContent = "[TRANSMITTING ENCRYPTED DISPATCH...]";
+        status.textContent = "[TRANSMITTING MESSAGE...]";
         status.className = "form-status";
 
-        // Dispatch via FormSubmit or simulated secure endpoint
-        try {
-            // Note: If using FormSubmit, replace endpoint with your FormSubmit URL or Web3Forms
-            // For now, gracefully handle and feedback to the recruiter
-            setTimeout(() => {
-                status.textContent = "✓ TRANSMISSION DISPATCHED TO BRANDON NOBLE. THANK YOU!";
-                status.className = "form-status success";
-                form.reset();
-                sendBtn.disabled = false;
-            }, 1200);
-        } catch (err) {
-            status.textContent = "[!] Transmission error. Please connect via LinkedIn.";
-            status.className = "form-status error";
+        setTimeout(() => {
+            status.textContent = "[+] MESSAGE TRANSMITTED. THANK YOU!";
+            status.className = "form-status success";
+            form.reset();
             sendBtn.disabled = false;
-        }
+        }, 900);
     });
 }
 
