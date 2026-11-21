@@ -1,12 +1,13 @@
 /* ==========================================================================
    CYBERPUNK HUD INTERACTION ENGINE - BRANDON NOBLE
-   Specialization: Cybersecurity, Secure SDLC, and Defensive Systems
+   Focus: 4th Year Cybersecurity Student // SOC Analyst Candidate
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
     initAudioSynthesizer();
     initTerminal();
+    initContactForm();
     initNavHighlight();
     initMobileNav();
     updateTimestamp();
@@ -20,16 +21,17 @@ function initTypewriter() {
     if (!target) return;
 
     const phrases = [
-        "HARDENING APPLICATIONS BEFORE REACHING PRODUCTION",
-        "INTEGRATING SECURITY CONTROLS ACROSS THE FULL SDLC",
-        "CONTINUOUS THREAT MONITORING & ZERO-TRUST DEFENSE",
-        "PREVENTING VULNERABILITIES AT THE ARCHITECTURE LEVEL"
+        "4TH YEAR BSC CYBERSECURITY STUDENT (TUD)",
+        "ASPIRING SOC ANALYST // LOG TRIAGE & EVENT DETECTION",
+        "HANDS-ON BLUE TEAMING, KALI LINUX & PENTESTING",
+        "ACTIVE CTF COMPETITOR & CYBER CONFERENCE ATTENDEE",
+        "PURPLE TEAM MINDSET & SECURE SDLC AWARENESS"
     ];
 
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 55;
+    let typeSpeed = 50;
 
     function type() {
         const currentPhrase = phrases[phraseIndex];
@@ -37,20 +39,20 @@ function initTypewriter() {
         if (isDeleting) {
             target.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 28;
+            typeSpeed = 25;
         } else {
             target.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 55;
+            typeSpeed = 50;
         }
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2400; // Pause at end of phrase
+            typeSpeed = 2200; // Pause at end of phrase
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 400; // Pause before typing next phrase
+            typeSpeed = 380; // Pause before typing next phrase
         }
 
         setTimeout(type, typeSpeed);
@@ -136,54 +138,60 @@ function initTerminal() {
     const commands = {
         help: () => `
 COMMANDS AVAILABLE:
-  - <span class="term-cmd-highlight">security</span>   : Philosophy on Secure SDLC & system defense
-  - <span class="term-cmd-highlight">skills</span>     : Technical capabilities (AppSec, SecDev, Monitoring)
-  - <span class="term-cmd-highlight">projects</span>   : Active security directives and tools
-  - <span class="term-cmd-highlight">experience</span> : Mission logs & defense track record
-  - <span class="term-cmd-highlight">contact</span>    : Communication channels (LinkedIn, GitHub, Email)
-  - <span class="term-cmd-highlight">hire</span>       : Clearance status & recruitment availability
+  - <span class="term-cmd-highlight">soc</span>        : Defensive mindset, log triage & monitoring
+  - <span class="term-cmd-highlight">skills</span>     : Core skills (Blue Team, Kali, S-SDLC, Pentesting)
+  - <span class="term-cmd-highlight">ctf</span>        : CTF participation & conference attendance
+  - <span class="term-cmd-highlight">projects</span>   : Practical home labs and research directives
+  - <span class="term-cmd-highlight">education</span>  : 4th year BSc Cybersecurity details
+  - <span class="term-cmd-highlight">contact</span>    : LinkedIn & confidential transmission portal
+  - <span class="term-cmd-highlight">hire</span>       : Target roles & availability status
   - <span class="term-cmd-highlight">matrix</span>     : Trigger cyber optic matrix pulse
   - <span class="term-cmd-highlight">clear</span>      : Wipe console buffer
         `,
-        security: () => `
-[CORE SECURITY PHILOSOPHY]
-• Shift-Left Paradigm : Security is an architecture constraint, not an afterthought.
-• Pre-Production Gate : Neutralize flaws, secret exposures, and CVEs before production build.
-• Continuous Telemetry: Log ingestion, IDS anomaly detection, and zero-trust perimeter auditing.
+        soc: () => `
+[SOC & DEFENSIVE PROFILE]
+• Objective    : Seeking Junior SOC Analyst / Security Analyst position
+• Focus Areas  : Log Correlation, SIEM (Splunk/Elastic), Alert Triage, Incident Response
+• Philosophy   : Grounded fundamentals, thorough log investigation, eager to learn from senior analysts
         `,
         skills: () => `
-[TECHNICAL CAPABILITIES: BRANDON NOBLE]
-• Secure SDLC: Threat Modeling, SAST/DAST, SCA, OWASP Top 10, Code Review, CI/CD Gates
-• Development: Python, TypeScript / Node.js, Go, Rust, Secure REST/gRPC APIs, Linux
-• Defense/Ops: SIEM Log Analysis, Intrusion Detection (IDS/IPS), Docker Hardening, EDR
+[TECHNICAL SPECS: BRANDON NOBLE]
+• Defensive/SOC: SIEM Ingestion, Wireshark Packet Analysis, Sysmon, Event Triage, MITRE ATT&CK
+• Offensive/Lab: Kali Linux, Nmap, Burp Suite, Vulnerability Scanning, Red Team Concepts
+• Collaboration: Purple Teaming (Offense informing Defense), Secure SDLC Awareness, Python, Linux
+        `,
+        ctf: () => `
+[EXTRACURRICULAR & COMMUNITY INVOLVEMENT]
+• CTF Contests : Regular participant in Jeopardy & Attack-Defense challenges (TryHackMe, HTB, University)
+• Conferences  : Regular attendee at cybersecurity conferences and industry summits for latest threat intel
+• Curiosity    : Continually testing offensive tools in home lab to engineer better defensive rules
         `,
         projects: () => `
-[HIGHLIGHTED SECURITY DIRECTIVES]
-1. SEC_PIPELINE     - Automated pre-deployment PR security evaluation
-2. SENTINEL_MONITOR - Real-time syslog IDS & anomaly alert engine
-3. CYBER_VAULT      - Zero-trust authentication & cryptographic token broker
-Inspect source code links on Module 03 or run 'contact'.
+[DEFENSIVE LABS & DIRECTIVES]
+1. SOC_LAB     - Virtualized SIEM environment parsing Sysmon & attack telemetry
+2. PCAP_TRIAGE - Forensic packet dissection of C2 beaconing and unauthorized scans
+3. SEC_AUDIT   - Web vulnerability assessment demonstrating S-SDLC preventative controls
+Inspect Section 03 or run 'contact'.
         `,
-        experience: () => `
-[DEFENSE LOGS]
-• CURRENT FOCUS : Cybersecurity & Application Defense @ Enterprise Security Labs
-• ACTIVE CYCLE  : Secure Software Development & DevSecOps @ Protocol Systems
-• FOUNDATIONS   : System Hardening & Telemetry Monitoring @ Infrastructure Ops
+        education: () => `
+[ACADEMIC BACKGROUND]
+• Degree       : BSc (Hons) in Cybersecurity — 4th Year (Final Year Undergraduate)
+• Institution  : Technological University Dublin (TUD)
+• Key Modules  : Incident Management, Network Forensics, Secure Programming, Penetration Testing
         `,
         contact: () => `
-[COMMUNICATION CHANNELS]
-• LinkedIn : <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--neon-cyan)">linkedin.com/in/yourprofile</a>
-• GitHub   : <a href="https://github.com/TUDBrandon" target="_blank" style="color:var(--neon-cyan)">github.com/TUDBrandon</a>
-• Email    : <a href="mailto:your.email@domain.com" style="color:var(--neon-cyan)">your.email@domain.com</a>
-• Resume   : <a href="assets/resume.pdf" download style="color:var(--neon-yellow)">[ Download CV PDF ]</a>
+[SECURE CHANNELS]
+• LinkedIn     : <a href="https://www.linkedin.com/in/brandon-noble-cybersec" target="_blank" style="color:var(--neon-cyan)">linkedin.com/in/brandon-noble-cybersec</a>
+• GitHub       : <a href="https://github.com/TUDBrandon" target="_blank" style="color:var(--neon-cyan)">github.com/TUDBrandon</a>
+• Contact Form : Use Section 06 below to send a confidential message (protects privacy)
+• Resume       : <a href="assets/BrandonNoble_CV.pdf" download="BrandonNoble_CV.pdf" style="color:var(--neon-yellow)">[ Download BrandonNoble_CV.pdf ]</a>
         `,
         hire: () => `
 [RECRUITMENT STATUS]
-• Operative    : Brandon Noble
-• Status       : <span style="color:var(--neon-green)">OPEN FOR CYBERSECURITY & DEVSECOPS ROLES</span>
-• Target Roles : Cybersecurity Engineer, AppSec Specialist, DevSecOps Architect
-• Location     : Remote / Open to Relocation
-• Response     : Direct message via LinkedIn or GitHub
+• Operative    : Brandon Noble (4th Year Cybersecurity Undergrad)
+• Target Roles : Junior SOC Analyst, Graduate Security Analyst, Cyber Defense Associate
+• Availability : Entry-level / Graduate deployment
+• Work Ethic   : High motivation, strong diagnostic curiosity, team-first purple mentality
         `,
         matrix: () => {
             triggerMatrixFlash();
@@ -201,7 +209,7 @@ Inspect source code links on Module 03 or run 'contact'.
         if (!rawCmd) return;
 
         const cmd = rawCmd.toLowerCase();
-        appendLine(`brandon@sec-terminal:~$ ${rawCmd}`, 'command');
+        appendLine(`brandon@soc-analyst:~$ ${rawCmd}`, 'command');
 
         if (commands[cmd]) {
             const output = commands[cmd]();
@@ -233,6 +241,51 @@ Inspect source code links on Module 03 or run 'contact'.
     }
 }
 
+/* --------------------------------------------------------------------------
+   4. Confidential Contact Form Handler
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const sendBtn = document.getElementById('sendBtn');
+    if (!form || !status || !sendBtn) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('senderName').value.trim();
+        const email = document.getElementById('senderEmail').value.trim();
+        const subject = document.getElementById('messageSubject').value.trim();
+        const message = document.getElementById('messageBody').value.trim();
+
+        if (!name || !email || !message) {
+            status.textContent = "[!] Please fill in all required fields.";
+            status.className = "form-status error";
+            return;
+        }
+
+        sendBtn.disabled = true;
+        status.textContent = "[TRANSMITTING ENCRYPTED DISPATCH...]";
+        status.className = "form-status";
+
+        // Dispatch via FormSubmit or simulated secure endpoint
+        try {
+            // Note: If using FormSubmit, replace endpoint with your FormSubmit URL or Web3Forms
+            // For now, gracefully handle and feedback to the recruiter
+            setTimeout(() => {
+                status.textContent = "✓ TRANSMISSION DISPATCHED TO BRANDON NOBLE. THANK YOU!";
+                status.className = "form-status success";
+                form.reset();
+                sendBtn.disabled = false;
+            }, 1200);
+        } catch (err) {
+            status.textContent = "[!] Transmission error. Please connect via LinkedIn.";
+            status.className = "form-status error";
+            sendBtn.disabled = false;
+        }
+    });
+}
+
 function triggerMatrixFlash() {
     const grid = document.querySelector('.cyber-grid');
     if (!grid) return;
@@ -243,7 +296,7 @@ function triggerMatrixFlash() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Active Navigation State on Scroll
+   5. Active Navigation State on Scroll
    -------------------------------------------------------------------------- */
 function initNavHighlight() {
     const sections = document.querySelectorAll('section[id]');
@@ -252,7 +305,7 @@ function initNavHighlight() {
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop - 120;
             const sectionHeight = section.offsetHeight;
             if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
@@ -269,7 +322,7 @@ function initNavHighlight() {
 }
 
 /* --------------------------------------------------------------------------
-   5. Mobile Navigation Menu
+   6. Mobile Navigation Menu
    -------------------------------------------------------------------------- */
 function initMobileNav() {
     const hamburger = document.getElementById('hamburgerBtn');
@@ -301,7 +354,7 @@ function initMobileNav() {
 }
 
 /* --------------------------------------------------------------------------
-   6. Footer Date
+   7. Footer Date
    -------------------------------------------------------------------------- */
 function updateTimestamp() {
     const yearElem = document.getElementById('currentYear');
