@@ -146,6 +146,13 @@ body.cyber-theme {
     padding: 0 24px;
 }
 
+.hud-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
 .hud-brand {
     display: flex;
     align-items: center;
@@ -172,13 +179,19 @@ body.cyber-theme {
 }
 
 .hud-status {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     background: rgba(0, 255, 102, 0.08);
-    border: 1px solid rgba(0, 255, 102, 0.3);
-    padding: 4px 12px;
+    border: 1px solid rgba(0, 255, 102, 0.4);
+    padding: 3px 10px;
     border-radius: 2px;
+    height: 28px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    margin: 0;
+    vertical-align: middle;
+    flex-shrink: 0;
 }
 
 .status-indicator {
@@ -1436,31 +1449,36 @@ body.cyber-theme {
 /* ==========================================================================
    Responsive Adaptations
    ========================================================================== */
-@media (max-width: 1024px) {
-    .hero-wrapper {
-        grid-template-columns: 1fr;
+@media (max-width: 1200px) {
+    .hud-nav {
+        gap: 16px;
     }
-    .hero-title {
-        font-size: 3rem;
-    }
-    .comm-grid {
-        grid-template-columns: 1fr;
+    .nav-link {
+        font-size: 0.8rem;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1050px) {
     .hud-nav {
         display: none;
     }
     .hud-hamburger {
         display: flex;
     }
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
     .hero-title {
         font-size: 2.3rem;
     }
-    .hero-metrics {
-        flex-direction: column;
-        gap: 10px;
+    .hud-id {
+        display: none;
     }
     .footer-container {
         flex-direction: column;
