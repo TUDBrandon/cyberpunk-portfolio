@@ -144,6 +144,12 @@ function initTerminal() {
 /* --------------------------------------------------------------------------
    4. Secure Contact Form Handler & Defensive Input Sanitization
    -------------------------------------------------------------------------- */
+// To connect live delivery to your email without exposing it publicly:
+// 1. Enter your email (e.g. "https://formsubmit.co/ajax/your-email@domain.com")
+// 2. Submit a test message on your live site once; FormSubmit sends a 1-click activation link to your inbox.
+// 3. After activating, FormSubmit provides a random private token so your real email is never exposed in the code!
+const FORMSUBMIT_ENDPOINT = ""; 
+
 let lastSubmissionTime = 0;
 const SUBMISSION_COOLDOWN_MS = 10000; // 10-second anti-spam rate limiter
 
@@ -222,13 +228,54 @@ function initContactForm() {
         status.className = "form-status";
         lastSubmissionTime = now;
 
-        setTimeout(() => {
-            // Guarantee output uses textContent (never innerHTML)
-            status.textContent = "[+] MESSAGE SANITIZED & TRANSMITTED. THANK YOU!";
-            status.className = "form-status success";
-            form.reset();
-            sendBtn.disabled = false;
-        }, 900);
+        if (FORMSUBMIT_ENDPOINT && FORMSUBMIT_ENDPOINT.trim() !== '') {
+            // Live Gateway Dispatch (FormSubmit)
+            fetch(FORMSUBMIT_ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: safeName,
+                    subject: safeSubject,
+                    message: safeMessage,
+                    _subject: `Portfolio Transmission from ${safeName}: ${safeSubject}`,
+                    _captcha: "false"
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    status.textContent = "[+] TRANSMISSION DELIVERED DIRECTLY TO INBOX. THANK YOU!";
+                    status.className = "form-status success";
+                    form.reset();
+                } else if (data.message && data.message.includes("Activate")) {
+                    status.textContent = "[*] Activation link dispatched to email. Click 'Activate' to confirm gateway!";
+                    status.className = "form-status success";
+                    form.reset();
+                } else {
+                    status.textContent = "[+] TRANSMISSION DISPATCHED VIA GATEWAY.";
+                    status.className = "form-status success";
+                    form.reset();
+                }
+            })
+            .catch(err => {
+                status.textContent = "[!] Transmission error. Please connect via LinkedIn.";
+                status.className = "form-status error";
+            })
+            .finally(() => {
+                sendBtn.disabled = false;
+            });
+        } else {
+            // Simulated / Demo Mode (prompting configuration)
+            setTimeout(() => {
+                status.textContent = "[+] MESSAGE SANITIZED & TRANSMITTED (DEMO MODE).";
+                status.className = "form-status success";
+                form.reset();
+                sendBtn.disabled = false;
+            }, 800);
+        }
     });
 }
 
