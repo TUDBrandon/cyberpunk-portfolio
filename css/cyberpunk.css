@@ -1,7 +1,4 @@
-/* ==========================================================================
-   CYBERPUNK HUD THEME - STYLESHEET
-   Engineered for CV / LinkedIn Portfolio Landing Page
-   ========================================================================== */
+/* Theme variables */
 
 :root {
     --bg-void: #050508;
@@ -79,9 +76,7 @@ body.cyber-theme {
     box-shadow: 0 0 8px var(--neon-pink);
 }
 
-/* ==========================================================================
-   Atmospheric Overlays (CRT, Grid, Vignette)
-   ========================================================================== */
+/* Atmospheric overlays */
 .crt-overlay {
     position: fixed;
     top: 0;
@@ -121,9 +116,7 @@ body.cyber-theme {
     background: radial-gradient(circle at center, transparent 40%, rgba(5, 5, 8, 0.8) 100%);
 }
 
-/* ==========================================================================
-   HUD Header & Navigation
-   ========================================================================== */
+/* Header & navigation */
 .hud-header {
     position: fixed;
     top: 0;
@@ -282,9 +275,7 @@ body.cyber-theme {
     transition: all 0.3s linear;
 }
 
-/* ==========================================================================
-   Cyber Button Component (Clipped Corners & Glitch)
-   ========================================================================== */
+/* Buttons */
 .cyber-btn {
     position: relative;
     display: inline-flex;
@@ -348,9 +339,7 @@ body.cyber-theme {
     transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   Main Layout & Global Section Layout
-   ========================================================================== */
+/* Main layout & sections */
 .hud-main {
     position: relative;
     z-index: 10;
@@ -393,9 +382,7 @@ body.cyber-theme {
     margin-top: 10px;
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
+/* Hero section */
 .hero-section {
     min-height: calc(100vh - var(--hud-height) - 40px);
     display: flex;
@@ -718,9 +705,7 @@ body.cyber-theme {
     padding: 2px 6px;
 }
 
-/* ==========================================================================
-   Specs Section (Cards & Skills)
-   ========================================================================== */
+/* Technical capabilities */
 .specs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -825,9 +810,7 @@ body.cyber-theme {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   Projects Section
-   ========================================================================== */
+/* Projects section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -950,9 +933,7 @@ body.cyber-theme {
     text-shadow: var(--neon-cyan-glow);
 }
 
-/* ==========================================================================
-   Timeline / Experience Logs
-   ========================================================================== */
+/* Timeline */
 .timeline-container {
     position: relative;
     max-width: 900px;
@@ -1026,9 +1007,7 @@ body.cyber-theme {
     color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   Comm Link & Interactive Cyber Terminal
-   ========================================================================== */
+/* Terminal */
 .comm-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1241,9 +1220,7 @@ body.cyber-theme {
     padding: 0 6px;
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer */
 .cyber-footer {
     position: relative;
     z-index: 10;
@@ -1289,9 +1266,7 @@ body.cyber-theme {
     text-shadow: var(--neon-pink-glow);
 }
 
-/* ==========================================================================
-   Field Ops: CTFs & Conferences Section
-   ========================================================================== */
+/* Field ops */
 .field-ops-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -1346,18 +1321,14 @@ body.cyber-theme {
     gap: 8px;
 }
 
-/* ==========================================================================
-   Cyberpunk SVG Icons & Utility
-   ========================================================================== */
+/* SVG icons */
 .cyber-svg-icon {
     vertical-align: middle;
     display: inline-block;
     flex-shrink: 0;
 }
 
-/* ==========================================================================
-   Contact Section (Spacious, Well-Spaced, Dedicated Layout)
-   ========================================================================== */
+/* Contact section */
 .contact-wrapper {
     max-width: 860px;
     margin: 0 auto;
@@ -1513,9 +1484,7 @@ body.cyber-theme {
     font-weight: 700;
 }
 
-/* ==========================================================================
-   Credential Viewer Modal
-   ========================================================================== */
+/* Credential viewer modal */
 .cyber-modal-overlay {
     position: fixed;
     top: 0;
@@ -1613,9 +1582,7 @@ body.cyber-theme {
     letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   Responsive Adaptations
-   ========================================================================== */
+/* Responsive */
 @media (max-width: 1200px) {
     .hud-nav {
         gap: 16px;

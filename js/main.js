@@ -1,7 +1,4 @@
-/* ==========================================================================
-   CYBERPUNK HUD INTERACTION ENGINE - BRANDON NOBLE
-   Focus: Cybersecurity Undergraduate & Technical Operative
-   ========================================================================== */
+// Main interaction scripts
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
@@ -14,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTimestamp();
 });
 
-/* --------------------------------------------------------------------------
-   1. Dynamic Typewriter / Decryptor Effect
-   -------------------------------------------------------------------------- */
+// Typewriter effect
 function initTypewriter() {
     const target = document.getElementById('typewriterTarget');
     if (!target) return;
@@ -48,12 +43,12 @@ function initTypewriter() {
         }
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2200; // Pause at end of phrase
+            typeSpeed = 2200;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 380; // Pause before typing next phrase
+            typeSpeed = 380;
         }
 
         setTimeout(type, typeSpeed);
@@ -62,9 +57,7 @@ function initTypewriter() {
     type();
 }
 
-/* --------------------------------------------------------------------------
-   2. Retro Cyberpunk Web Audio Synthesizer (0 External Assets Required)
-   -------------------------------------------------------------------------- */
+// Audio feedback
 let audioCtx = null;
 let sfxEnabled = false;
 
@@ -92,7 +85,6 @@ function initAudioSynthesizer() {
         }
     });
 
-    // Add sound effects to buttons and nav links
     const interactiveElements = document.querySelectorAll('.cyber-btn, .nav-link, .channel-card');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -122,13 +114,11 @@ function playBeep(freq, type = 'sine', duration = 0.08, volume = 0.05) {
         osc.start();
         osc.stop(audioCtx.currentTime + duration);
     } catch (e) {
-        // Audio policy or error ignore
+        // Audio error ignore
     }
 }
 
-/* --------------------------------------------------------------------------
-   3. Interactive Cyber Terminal CLI (Gracefully checks for DOM presence)
-   -------------------------------------------------------------------------- */
+// Terminal CLI
 function initTerminal() {
     const form = document.getElementById('terminalForm');
     const input = document.getElementById('terminalInput');
@@ -142,26 +132,17 @@ function initTerminal() {
     });
 }
 
-/* --------------------------------------------------------------------------
-   4. Secure Contact Form Handler & Defensive Input Sanitization
-   -------------------------------------------------------------------------- */
-// Web3Forms Gateway: Delivers verified emails directly to your inbox without exposing your address
+// Contact form handler
 const WEB3FORMS_ACCESS_KEY = "0f0abdad-3bc6-4ebe-872a-ad612f906b28";
-
 let lastSubmissionTime = 0;
-const SUBMISSION_COOLDOWN_MS = 10000; // 10-second anti-spam rate limiter
+const SUBMISSION_COOLDOWN_MS = 10000;
 
-/**
- * Strips non-printable ASCII control characters and escapes HTML entities.
- * Ensures all user input is strictly treated as immutable plain text.
- */
+// Basic input sanitization
 function sanitizeInput(str) {
     if (typeof str !== 'string') return '';
     
-    // Strip ASCII control characters (0x00 - 0x1F, except newline and tab) and DEL (0x7F)
     const cleaned = str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
 
-    // Entity-encode HTML control characters to prevent XSS / markup injection
     return cleaned
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -181,7 +162,7 @@ function initContactForm() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 1. Anti-Bot Honeypot Defense: Silently reject automated crawlers
+        // Honeypot check
         if (honeypot && honeypot.value.trim() !== '') {
             status.textContent = "[+] MESSAGE TRANSMITTED. THANK YOU!";
             status.className = "form-status success";
@@ -189,7 +170,7 @@ function initContactForm() {
             return;
         }
 
-        // 2. Client-side Rate Limiting: Prevent rapid-fire flood attacks
+        // Rate limit check
         const now = Date.now();
         if (now - lastSubmissionTime < SUBMISSION_COOLDOWN_MS) {
             const remaining = Math.ceil((SUBMISSION_COOLDOWN_MS - (now - lastSubmissionTime)) / 1000);
@@ -198,7 +179,7 @@ function initContactForm() {
             return;
         }
 
-        // 3. Extract and Sanitize Inputs
+        // Sanitize inputs
         const rawName = document.getElementById('senderName')?.value || '';
         const rawSubject = document.getElementById('messageSubject')?.value || '';
         const rawMessage = document.getElementById('messageBody')?.value || '';
@@ -207,7 +188,7 @@ function initContactForm() {
         const safeSubject = sanitizeInput(rawSubject.trim());
         const safeMessage = sanitizeInput(rawMessage.trim());
 
-        // 4. Boundary Validation (Length constraints)
+        // Field validation
         if (!safeName || !safeSubject || !safeMessage) {
             status.textContent = "[!] Validation Error: All fields (Name, Subject, Message) are required.";
             status.className = "form-status error";
@@ -220,7 +201,7 @@ function initContactForm() {
             return;
         }
 
-        // 5. Safe Transmission Processing (Strict string handling, no innerHTML execution)
+        // Submit payload
         sendBtn.disabled = true;
         status.textContent = "[VALIDATING & TRANSMITTING PAYLOAD...]";
         status.className = "form-status";
@@ -270,9 +251,7 @@ function triggerMatrixFlash() {
     }, 800);
 }
 
-/* --------------------------------------------------------------------------
-   5. Active Navigation State on Scroll
-   -------------------------------------------------------------------------- */
+// Navigation highlight on scroll
 function initNavHighlight() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -296,9 +275,7 @@ function initNavHighlight() {
     });
 }
 
-/* --------------------------------------------------------------------------
-   6. Mobile Navigation Menu
-   -------------------------------------------------------------------------- */
+// Mobile navigation toggle
 function initMobileNav() {
     const hamburger = document.getElementById('hamburgerBtn');
     const nav = document.getElementById('hudNav');
@@ -328,9 +305,7 @@ function initMobileNav() {
     });
 }
 
-/* --------------------------------------------------------------------------
-   7. Footer Date
-   -------------------------------------------------------------------------- */
+// Footer timestamp
 function updateTimestamp() {
     const yearElem = document.getElementById('currentYear');
     if (yearElem) {
@@ -338,9 +313,7 @@ function updateTimestamp() {
     }
 }
 
-/* --------------------------------------------------------------------------
-   8. Verified Credential Modal Viewer
-   -------------------------------------------------------------------------- */
+// Certificate modal viewer
 function initCertModal() {
     const modal = document.getElementById('certModal');
     const openBtn = document.getElementById('openCertModal');
