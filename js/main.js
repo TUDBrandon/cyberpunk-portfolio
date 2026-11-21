@@ -142,33 +142,89 @@ function initTerminal() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Contact Form Handler (Name, Subject, Message)
+   4. Secure Contact Form Handler & Defensive Input Sanitization
    -------------------------------------------------------------------------- */
+let lastSubmissionTime = 0;
+const SUBMISSION_COOLDOWN_MS = 10000; // 10-second anti-spam rate limiter
+
+/**
+ * Strips non-printable ASCII control characters and escapes HTML entities.
+ * Ensures all user input is strictly treated as immutable plain text.
+ */
+function sanitizeInput(str) {
+    if (typeof str !== 'string') return '';
+    
+    // Strip ASCII control characters (0x00 - 0x1F, except newline and tab) and DEL (0x7F)
+    const cleaned = str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
+
+    // Entity-encode HTML control characters to prevent XSS / markup injection
+    return cleaned
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+}
+
 function initContactForm() {
     const form = document.getElementById('contactForm');
     const status = document.getElementById('formStatus');
     const sendBtn = document.getElementById('sendBtn');
+    const honeypot = document.getElementById('formHoneypot');
     if (!form || !status || !sendBtn) return;
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('senderName').value.trim();
-        const subject = document.getElementById('messageSubject').value.trim();
-        const message = document.getElementById('messageBody').value.trim();
+        // 1. Anti-Bot Honeypot Defense: Silently reject automated crawlers
+        if (honeypot && honeypot.value.trim() !== '') {
+            status.textContent = "[+] MESSAGE TRANSMITTED. THANK YOU!";
+            status.className = "form-status success";
+            form.reset();
+            return;
+        }
 
-        if (!name || !subject || !message) {
-            status.textContent = "[!] Please fill in all fields (Name, Subject, Message).";
+        // 2. Client-side Rate Limiting: Prevent rapid-fire flood attacks
+        const now = Date.now();
+        if (now - lastSubmissionTime < SUBMISSION_COOLDOWN_MS) {
+            const remaining = Math.ceil((SUBMISSION_COOLDOWN_MS - (now - lastSubmissionTime)) / 1000);
+            status.textContent = `[!] Cooldown active. Please wait ${remaining}s before resubmitting.`;
             status.className = "form-status error";
             return;
         }
 
+        // 3. Extract and Sanitize Inputs
+        const rawName = document.getElementById('senderName')?.value || '';
+        const rawSubject = document.getElementById('messageSubject')?.value || '';
+        const rawMessage = document.getElementById('messageBody')?.value || '';
+
+        const safeName = sanitizeInput(rawName.trim());
+        const safeSubject = sanitizeInput(rawSubject.trim());
+        const safeMessage = sanitizeInput(rawMessage.trim());
+
+        // 4. Boundary Validation (Length constraints)
+        if (!safeName || !safeSubject || !safeMessage) {
+            status.textContent = "[!] Validation Error: All fields (Name, Subject, Message) are required.";
+            status.className = "form-status error";
+            return;
+        }
+
+        if (safeName.length > 100 || safeSubject.length > 150 || safeMessage.length > 3000) {
+            status.textContent = "[!] Payload Error: Input exceeds maximum permitted byte boundaries.";
+            status.className = "form-status error";
+            return;
+        }
+
+        // 5. Safe Transmission Processing (Strict string handling, no innerHTML execution)
         sendBtn.disabled = true;
-        status.textContent = "[TRANSMITTING MESSAGE...]";
+        status.textContent = "[VALIDATING & TRANSMITTING PAYLOAD...]";
         status.className = "form-status";
+        lastSubmissionTime = now;
 
         setTimeout(() => {
-            status.textContent = "[+] MESSAGE TRANSMITTED. THANK YOU!";
+            // Guarantee output uses textContent (never innerHTML)
+            status.textContent = "[+] MESSAGE SANITIZED & TRANSMITTED. THANK YOU!";
             status.className = "form-status success";
             form.reset();
             sendBtn.disabled = false;
