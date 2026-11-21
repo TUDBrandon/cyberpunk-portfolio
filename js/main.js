@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initNavHighlight();
     initMobileNav();
+    initCertModal();
     updateTimestamp();
 });
 
@@ -335,4 +336,44 @@ function updateTimestamp() {
     if (yearElem) {
         yearElem.textContent = new Date().getFullYear();
     }
+}
+
+/* --------------------------------------------------------------------------
+   8. Verified Credential Modal Viewer
+   -------------------------------------------------------------------------- */
+function initCertModal() {
+    const modal = document.getElementById('certModal');
+    const openBtn = document.getElementById('openCertModal');
+    const closeBtn = document.getElementById('closeCertModal');
+    if (!modal || !openBtn) return;
+
+    function openModal() {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
 }

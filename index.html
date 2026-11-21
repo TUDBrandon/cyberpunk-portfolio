@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com https://formsubmit.co;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://formsubmit.co; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com https://formsubmit.co;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>BRANDON NOBLE // CYBERSECURITY & TECHNICAL DEFENSE</title>
@@ -66,12 +66,12 @@
             <div class="section-bracket-tl"></div>
             <div class="section-bracket-br"></div>
             
-            <div class="hero-wrapper">
-                <div class="cyber-alert-ticker">
-                    <span class="ticker-label">STATUS FEED:</span>
-                    <span class="ticker-content" id="tickerText">4TH YEAR CYBERSECURITY UNDERGRADUATE // TU DUBLIN // DEFENSIVE SECURITY, OFFENSIVE TESTING & S-SDLC...</span>
-                </div>
+            <div class="cyber-alert-ticker">
+                <span class="ticker-label">STATUS FEED:</span>
+                <span class="ticker-content" id="tickerText">4TH YEAR CYBERSECURITY UNDERGRADUATE // TU DUBLIN // DEFENSIVE SECURITY, OFFENSIVE TESTING & S-SDLC...</span>
+            </div>
 
+            <div class="hero-wrapper">
                 <div class="hero-content">
                     <div class="cyber-tagline">
                         <span class="tag-bracket">[</span>
@@ -513,6 +513,26 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-role">NVIDIA DLI CERTIFICATE — FUNDAMENTALS OF DEEP LEARNING</span>
+                            <span class="timeline-corp">@ NVIDIA DEEP LEARNING INSTITUTE</span>
+                            <span class="timeline-time">VERIFIED CREDENTIAL</span>
+                        </div>
+                        <p class="timeline-body">
+                            Completed professional technical certification through the <strong>NVIDIA Deep Learning Institute (DLI)</strong>. Hands-on training covering deep neural network architectures, computer vision, data manipulation, and GPU-accelerated model training and optimization.
+                        </p>
+                        <div class="credential-action-bar" style="margin-top: 14px;">
+                            <button id="openCertModal" class="cyber-btn cyber-btn-outline cyber-btn-sm" type="button">
+                                <span class="btn-cut"></span>
+                                <span class="btn-text">[ VIEW_VERIFIED_CREDENTIAL ]</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -595,6 +615,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Secure Credential Viewer Modal (View-Only, Protected Against Direct Drag/Context Menu) -->
+        <div id="certModal" class="cyber-modal-overlay" aria-hidden="true" style="display: none;">
+            <div class="cyber-modal-frame" oncontextmenu="return false;">
+                <div class="cyber-modal-header">
+                    <span class="modal-title">// VERIFIED CREDENTIAL: NVIDIA DEEP LEARNING INSTITUTE</span>
+                    <button id="closeCertModal" class="modal-close-btn" type="button" aria-label="Close modal">[ CLOSE × ]</button>
+                </div>
+                <div class="cyber-modal-body">
+                    <iframe src="assets/certifications/NVIDIA_DeepLearning.pdf#toolbar=0&navpanes=0&scrollbar=1" class="cert-iframe" title="NVIDIA Fundamentals of Deep Learning Certificate"></iframe>
+                </div>
+                <div class="cyber-modal-footer">
+                    <span class="cert-notice">// AUTHENTICATED CREDENTIAL RECORD · BRANDON NOBLE</span>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Cyber Footer -->
