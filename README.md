@@ -1,48 +1,35 @@
-# ⚡ CYBERPUNK HUD PORTFOLIO & CV LANDING PAGE
+# 🛡️ BRANDON NOBLE // CYBERSECURITY & SECURE SDLC PORTFOLIO
 
-> High-octane, interactive cyberpunk/sci-fi themed personal portfolio and landing page engineered for CVs, LinkedIn profiles, and job applications.
-
----
-
-## 🚀 Overview & Features
-
-- **Cyberpunk HUD Aesthetics**: Authentic neon cyan & magenta glow, CRT scanlines, subtle grid overlay, sci-fi clipped-corner polygonal cards, and glitch headline effects.
-- **Employer & LinkedIn Focused**:
-  - Direct callouts for your CV/resume download (`assets/resume.pdf`).
-  - Clear LinkedIn profile integration and social channels.
-  - Tactical metrics display (years of experience, uptime/reliability, code readiness).
-  - Career Mission Logs timeline for work history.
-  - Technical Specifications breakdown with visual skill indicators.
-- **Interactive Cyber Terminal**:
-  - Employers can test an interactive terminal CLI in their browser.
-  - Supports commands: `help`, `skills`, `projects`, `experience`, `contact`, `hire`, `matrix`, `clear`.
-- **Pure Zero-Dependency Stack**:
-  - 100% Vanilla HTML5, CSS3, and JavaScript.
-  - Zero build step required — runs instantly in any browser, GitHub Pages, Vercel, or Netlify.
-  - Built-in Web Audio API synthesizer for retro click/beep SFX without downloading external audio files.
+> Interactive cyberpunk-themed portfolio and CV landing page engineered for Brandon Noble. 
+> Specialization: **Cybersecurity**, **Secure SDLC (DevSecOps)**, and **Defensive Systems Telemetry**.
 
 ---
 
-## 📂 File Architecture
+## ⚡ Core Value & Directives
+
+- **Secure SDLC & Shift-Left Engineering**: Embedding automated security gates, threat modeling, code auditing, and vulnerability scanning directly into the CI/CD pipeline to neutralize flaws before code reaches production.
+- **Defensive Telemetry & Systems Monitoring**: Centralized log correlation, IDS anomaly alerts, endpoint security, and zero-trust access architecture.
+- **Cyberpunk Tactical Aesthetic**: Neon cyan & magenta CRT HUD, glitch headline typography, responsive command terminal, and audio synthesizers.
+
+---
+
+## 📂 Repository Structure
 
 ```
 cyberpunk-portfolio/
-├── index.html         # Main landing page markup & sections
+├── index.html         # Main semantic portfolio & cybersecurity dossier
 ├── css/
-│   └── cyberpunk.css  # Cyberpunk styling, glitch animations, responsive design
+│   └── cyberpunk.css  # Cyberpunk styling, glitch animations, responsive grid
 ├── js/
-│   └── main.js        # Typewriter engine, terminal CLI, audio synthesizer
-├── assets/            # Drop your resume.pdf and profile avatar here
+│   └── main.js        # Typewriter engine, defense CLI terminal, audio synth
+├── assets/            # Drop your resume.pdf and avatar here
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🛠️ Personalization Checklist
+## 🌐 Live Deployment
 
-1. **Identity & Name**: Update `"YOUR NAME"` in `index.html` (Hero title and Operative ID in the header).
-2. **Social & Links**: Replace `https://linkedin.com/in/yourprofile` and `https://github.com/yourusername` with your real profile URLs.
-3. **Resume / CV**: Place your PDF file at `assets/resume.pdf`.
-4. **Bio & Experience**: Customize the role titles, company names, and dates in Module 04 (`#mission-logs`).
-5. **Projects**: Add your live links and GitHub repositories in Module 03 (`#directives`).
+- **Live URL**: [https://tudbrandon.github.io/cyberpunk-portfolio/](https://tudbrandon.github.io/cyberpunk-portfolio/)
+- **GitHub Repository**: [https://github.com/TUDBrandon/cyberpunk-portfolio](https://github.com/TUDBrandon/cyberpunk-portfolio)

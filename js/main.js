@@ -1,5 +1,6 @@
 /* ==========================================================================
-   CYBERPUNK HUD INTERACTION ENGINE
+   CYBERPUNK HUD INTERACTION ENGINE - BRANDON NOBLE
+   Specialization: Cybersecurity, Secure SDLC, and Defensive Systems
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,16 +20,16 @@ function initTypewriter() {
     if (!target) return;
 
     const phrases = [
-        "BUILDING MISSION-CRITICAL DISTRIBUTED SYSTEMS",
-        "ARCHITECTING CLOUD INFRASTRUCTURE & MICROSERVICES",
-        "CRAFTING ZERO-LATENCY RESPONSIVE WEB APPLICATIONS",
-        "AVAILABLE FOR FULL-TIME SENIOR ROLES & CONTRACTS"
+        "HARDENING APPLICATIONS BEFORE REACHING PRODUCTION",
+        "INTEGRATING SECURITY CONTROLS ACROSS THE FULL SDLC",
+        "CONTINUOUS THREAT MONITORING & ZERO-TRUST DEFENSE",
+        "PREVENTING VULNERABILITIES AT THE ARCHITECTURE LEVEL"
     ];
 
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 60;
+    let typeSpeed = 55;
 
     function type() {
         const currentPhrase = phrases[phraseIndex];
@@ -36,15 +37,15 @@ function initTypewriter() {
         if (isDeleting) {
             target.textContent = currentPhrase.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 30;
+            typeSpeed = 28;
         } else {
             target.textContent = currentPhrase.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 60;
+            typeSpeed = 55;
         }
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2200; // Pause at end of phrase
+            typeSpeed = 2400; // Pause at end of phrase
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
@@ -123,7 +124,7 @@ function playBeep(freq, type = 'sine', duration = 0.08, volume = 0.05) {
 }
 
 /* --------------------------------------------------------------------------
-   3. Interactive Cyber Terminal CLI
+   3. Interactive Cyber Terminal CLI - Defensive Operations Shell
    -------------------------------------------------------------------------- */
 function initTerminal() {
     const form = document.getElementById('terminalForm');
@@ -135,51 +136,58 @@ function initTerminal() {
     const commands = {
         help: () => `
 COMMANDS AVAILABLE:
-  - <span class="term-cmd-highlight">skills</span>    : Display technical capabilities and stack
-  - <span class="term-cmd-highlight">projects</span>  : Show highlighted engineering directives
-  - <span class="term-cmd-highlight">experience</span>: View career mission logs
-  - <span class="term-cmd-highlight">contact</span>   : Retrieve communication channels (LinkedIn, Email)
-  - <span class="term-cmd-highlight">hire</span>      : Show clearance status & work availability
-  - <span class="term-cmd-highlight">matrix</span>    : Trigger cyber optic matrix pulse
-  - <span class="term-cmd-highlight">clear</span>     : Wipe console buffer
+  - <span class="term-cmd-highlight">security</span>   : Philosophy on Secure SDLC & system defense
+  - <span class="term-cmd-highlight">skills</span>     : Technical capabilities (AppSec, SecDev, Monitoring)
+  - <span class="term-cmd-highlight">projects</span>   : Active security directives and tools
+  - <span class="term-cmd-highlight">experience</span> : Mission logs & defense track record
+  - <span class="term-cmd-highlight">contact</span>    : Communication channels (LinkedIn, GitHub, Email)
+  - <span class="term-cmd-highlight">hire</span>       : Clearance status & recruitment availability
+  - <span class="term-cmd-highlight">matrix</span>     : Trigger cyber optic matrix pulse
+  - <span class="term-cmd-highlight">clear</span>      : Wipe console buffer
+        `,
+        security: () => `
+[CORE SECURITY PHILOSOPHY]
+• Shift-Left Paradigm : Security is an architecture constraint, not an afterthought.
+• Pre-Production Gate : Neutralize flaws, secret exposures, and CVEs before production build.
+• Continuous Telemetry: Log ingestion, IDS anomaly detection, and zero-trust perimeter auditing.
         `,
         skills: () => `
-[STACK ARCHITECTURE]
-• Frontend : TypeScript, React, Next.js, WebGL, TailwindCSS
-• Backend  : Node.js, Python, Go, Microservices, REST / GraphQL
-• Database : PostgreSQL, Redis, MongoDB
-• Cloud/Ops: Docker, Kubernetes, AWS, CI/CD, Linux
+[TECHNICAL CAPABILITIES: BRANDON NOBLE]
+• Secure SDLC: Threat Modeling, SAST/DAST, SCA, OWASP Top 10, Code Review, CI/CD Gates
+• Development: Python, TypeScript / Node.js, Go, Rust, Secure REST/gRPC APIs, Linux
+• Defense/Ops: SIEM Log Analysis, Intrusion Detection (IDS/IPS), Docker Hardening, EDR
         `,
         projects: () => `
-[SELECTED DIRECTIVES]
-1. PROJECT_SYNAPSE  - Distributed real-time telemetry engine (10M+ events/day)
-2. NEO_TERMINAL     - Developer CLI suite with 2,500+ active users
-3. CYBER_VAULT      - Zero-Knowledge decentralized authentication
-Type 'contact' or scroll up to Module 03 to inspect details.
+[HIGHLIGHTED SECURITY DIRECTIVES]
+1. SEC_PIPELINE     - Automated pre-deployment PR security evaluation
+2. SENTINEL_MONITOR - Real-time syslog IDS & anomaly alert engine
+3. CYBER_VAULT      - Zero-trust authentication & cryptographic token broker
+Inspect source code links on Module 03 or run 'contact'.
         `,
         experience: () => `
-[CAREER LOGS]
-• 2024-PRESENT : Senior Software Engineer @ Corp Titan
-• 2022-2024    : Full-Stack Developer @ Neural Innovations
-• 2020-2022    : Software Engineering Apprentice @ Protocol Systems
+[DEFENSE LOGS]
+• CURRENT FOCUS : Cybersecurity & Application Defense @ Enterprise Security Labs
+• ACTIVE CYCLE  : Secure Software Development & DevSecOps @ Protocol Systems
+• FOUNDATIONS   : System Hardening & Telemetry Monitoring @ Infrastructure Ops
         `,
         contact: () => `
 [COMMUNICATION CHANNELS]
 • LinkedIn : <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--neon-cyan)">linkedin.com/in/yourprofile</a>
+• GitHub   : <a href="https://github.com/TUDBrandon" target="_blank" style="color:var(--neon-cyan)">github.com/TUDBrandon</a>
 • Email    : <a href="mailto:your.email@domain.com" style="color:var(--neon-cyan)">your.email@domain.com</a>
-• GitHub   : <a href="https://github.com/yourusername" target="_blank" style="color:var(--neon-cyan)">github.com/yourusername</a>
 • Resume   : <a href="assets/resume.pdf" download style="color:var(--neon-yellow)">[ Download CV PDF ]</a>
         `,
         hire: () => `
 [RECRUITMENT STATUS]
-• Status       : <span style="color:var(--neon-green)">OPEN FOR EMPLOYMENT // CONTRACTS</span>
-• Target Roles : Senior Software Engineer, Full-Stack Architect, Tech Lead
-• Location     : Remote / Global Relocation Open
-• Response Time: Within 24 hours via LinkedIn / Email
+• Operative    : Brandon Noble
+• Status       : <span style="color:var(--neon-green)">OPEN FOR CYBERSECURITY & DEVSECOPS ROLES</span>
+• Target Roles : Cybersecurity Engineer, AppSec Specialist, DevSecOps Architect
+• Location     : Remote / Open to Relocation
+• Response     : Direct message via LinkedIn or GitHub
         `,
         matrix: () => {
             triggerMatrixFlash();
-            return `[OPTIC PULSE TRIGGERED] Neural visual sync re-calibrated.`;
+            return `[OPTIC PULSE TRIGGERED] Defense grid visual sync re-calibrated.`;
         },
         clear: () => {
             history.innerHTML = '';
@@ -193,7 +201,7 @@ Type 'contact' or scroll up to Module 03 to inspect details.
         if (!rawCmd) return;
 
         const cmd = rawCmd.toLowerCase();
-        appendLine(`user@cyber-portfolio:~$ ${rawCmd}`, 'command');
+        appendLine(`brandon@sec-terminal:~$ ${rawCmd}`, 'command');
 
         if (commands[cmd]) {
             const output = commands[cmd]();
