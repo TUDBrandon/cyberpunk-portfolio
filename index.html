@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERNETIC_PORTFOLIO // CV & LINKEDIN LANDING</title>
+    <meta name="description" content="Cyberpunk themed interactive developer portfolio and CV landing page.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/cyberpunk.css">
+</head>
+<body class="cyber-theme">
+    <!-- Scanlines and CRT Flicker Overlays -->
+    <div class="crt-overlay" aria-hidden="true"></div>
+    <div class="cyber-grid" aria-hidden="true"></div>
+    <div class="cyber-vignette" aria-hidden="true"></div>
+
+    <!-- HUD Top Status Bar -->
+    <header class="hud-header">
+        <div class="hud-container">
+            <div class="hud-brand">
+                <span class="cyber-glitch-badge" data-text="NET.RUNNER">NET.RUNNER</span>
+                <span class="hud-id">// OPERATIVE_ID: [YOUR_NAME]</span>
+            </div>
+
+            <div class="hud-status">
+                <span class="status-indicator pulsing"></span>
+                <span class="status-text">SYS_ONLINE : OPEN_FOR_HIRE</span>
+            </div>
+
+            <nav class="hud-nav" id="hudNav">
+                <a href="#overview" class="nav-link active"><span class="nav-num">01//</span>OVERVIEW</a>
+                <a href="#tech-specs" class="nav-link"><span class="nav-num">02//</span>SPECS</a>
+                <a href="#directives" class="nav-link"><span class="nav-num">03//</span>DIRECTIVES</a>
+                <a href="#mission-logs" class="nav-link"><span class="nav-num">04//</span>LOGS</a>
+                <a href="#comm-link" class="nav-link"><span class="nav-num">05//</span>COMM_LINK</a>
+            </nav>
+
+            <div class="hud-actions">
+                <button id="audioToggle" class="cyber-btn cyber-btn-sm" title="Toggle Synthesizer Sound FX">
+                    <span class="btn-cut"></span>
+                    <span class="btn-text">SFX: OFF</span>
+                </button>
+                <a href="#comm-link" class="cyber-btn cyber-btn-primary cyber-btn-sm">
+                    <span class="btn-cut"></span>
+                    <span class="btn-text">CV_ACCESS</span>
+                </a>
+                <button class="hud-hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="hud-main">
+        <!-- Hero Section -->
+        <section id="overview" class="cyber-section hero-section">
+            <div class="section-bracket-tl"></div>
+            <div class="section-bracket-br"></div>
+            
+            <div class="hero-wrapper">
+                <div class="cyber-alert-ticker">
+                    <span class="ticker-label">TRANSMISSION:</span>
+                    <span class="ticker-content" id="tickerText">INITIALIZING NEURAL LINK... SYSTEM NOMINAL... CANDIDATE AVAILABLE FOR IMMEDIATE DEPLOYMENT...</span>
+                </div>
+
+                <div class="hero-content">
+                    <div class="cyber-tagline">
+                        <span class="tag-bracket">[</span>
+                        <span class="tag-text">SYSTEMS ARCHITECT & SOFTWARE ENGINEER</span>
+                        <span class="tag-bracket">]</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="glitch" data-text="YOUR NAME">YOUR NAME</span>
+                    </h1>
+
+                    <div class="hero-subheading">
+                        <span class="sub-prefix">&gt; PRIMARY DIRECTIVE: </span>
+                        <span class="typewriter-text" id="typewriterTarget"></span>
+                        <span class="cursor-blink">_</span>
+                    </div>
+
+                    <p class="hero-desc">
+                        Engineering resilient, scalable digital systems at the intersection of high-performance architecture, 
+                        cutting-edge web applications, and cybernetic UI. Built for mission-critical enterprise environments.
+                    </p>
+
+                    <!-- Tactical Quick Metrics -->
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="metric-num">99.9%</span>
+                            <span class="metric-label">UPTIME ARCHITECTURE</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-num">5+ YRS</span>
+                            <span class="metric-label">CYCLE EXPERIENCE</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-num">100%</span>
+                            <span class="metric-label">PRODUCTION READINESS</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-ctas">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-primary">
+                            <span class="btn-cut"></span>
+                            <span class="btn-icon">⚡</span>
+                            <span class="btn-text">LINKEDIN_PROFILE</span>
+                        </a>
+                        <a href="#directives" class="cyber-btn cyber-btn-secondary">
+                            <span class="btn-cut"></span>
+                            <span class="btn-text">VIEW_PROJECTS</span>
+                        </a>
+                        <a href="assets/resume.pdf" download class="cyber-btn cyber-btn-outline">
+                            <span class="btn-cut"></span>
+                            <span class="btn-icon">📥</span>
+                            <span class="btn-text">DOWNLOAD_CV.PDF</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Holo Dossier Card -->
+                <div class="hero-dossier">
+                    <div class="dossier-frame">
+                        <div class="dossier-header">
+                            <span class="dossier-title">// DOSSIER: APPLICANT_RECORD</span>
+                            <span class="dossier-hash">HEX#0x7E3A9</span>
+                        </div>
+                        
+                        <div class="dossier-avatar-container">
+                            <div class="avatar-placeholder">
+                                <div class="avatar-radar"></div>
+                                <div class="avatar-crosshair"></div>
+                                <div class="avatar-symbol">&lt;/&gt;</div>
+                                <span class="avatar-caption">[ OPERATIVE SCAN ]</span>
+                            </div>
+                        </div>
+
+                        <div class="dossier-meta">
+                            <div class="meta-row">
+                                <span class="meta-key">CLASS:</span>
+                                <span class="meta-val">Full-Stack / Core Dev</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">LOCATION:</span>
+                                <span class="meta-val">Remote / Global</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">CLEARANCE:</span>
+                                <span class="meta-val highlight">Level 5 (Hire Ready)</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">COMM_PROTOCOL:</span>
+                                <span class="meta-val">Encrypted HTTPS / Email</span>
+                            </div>
+                        </div>
+
+                        <div class="dossier-footer">
+                            <span class="dossier-barcode">||||||||||||||||||||||||||||||||||||</span>
+                            <span class="dossier-stamp">VERIFIED CANDIDATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specs / Skills Section -->
+        <section id="tech-specs" class="cyber-section">
+            <div class="section-header">
+                <div class="section-tag">// MODULE: 02</div>
+                <h2 class="section-title">TECHNICAL_SPECIFICATIONS</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="specs-grid">
+                <!-- Stack Category 1 -->
+                <div class="cyber-card">
+                    <div class="card-corner-tl"></div>
+                    <div class="card-corner-br"></div>
+                    <div class="card-header">
+                        <span class="card-icon">⚡</span>
+                        <h3 class="card-title">FRONTEND_NEURAL_ENGINES</h3>
+                    </div>
+                    <p class="card-desc">Constructing ultra-responsive, zero-latency client interfaces and interactive web apps.</p>
+                    <div class="skill-pills">
+                        <span class="cyber-pill">TypeScript</span>
+                        <span class="cyber-pill">React.js</span>
+                        <span class="cyber-pill">Next.js</span>
+                        <span class="cyber-pill">Vue / Svelte</span>
+                        <span class="cyber-pill">TailwindCSS</span>
+                        <span class="cyber-pill">WebGL / Three.js</span>
+                    </div>
+                    <div class="card-stat">
+                        <div class="stat-bar"><div class="stat-fill" style="width: 95%;"></div></div>
+                        <span class="stat-label">Proficiency: 95%</span>
+                    </div>
+                </div>
+
+                <!-- Stack Category 2 -->
+                <div class="cyber-card">
+                    <div class="card-corner-tl"></div>
+                    <div class="card-corner-br"></div>
+                    <div class="card-header">
+                        <span class="card-icon">⚙️</span>
+                        <h3 class="card-title">BACKEND_MAINFRAMES</h3>
+                    </div>
+                    <p class="card-desc">High-throughput microservices, distributed data layers, and secure REST/GraphQL architectures.</p>
+                    <div class="skill-pills">
+                        <span class="cyber-pill">Node.js</span>
+                        <span class="cyber-pill">Python</span>
+                        <span class="cyber-pill">Go / Rust</span>
+                        <span class="cyber-pill">PostgreSQL</span>
+                        <span class="cyber-pill">Redis</span>
+                        <span class="cyber-pill">GraphQL</span>
+                    </div>
+                    <div class="card-stat">
+                        <div class="stat-bar"><div class="stat-fill" style="width: 90%;"></div></div>
+                        <span class="stat-label">Proficiency: 90%</span>
+                    </div>
+                </div>
+
+                <!-- Stack Category 3 -->
+                <div class="cyber-card">
+                    <div class="card-corner-tl"></div>
+                    <div class="card-corner-br"></div>
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h3 class="card-title">DEVOPS & CLOUD_GRID</h3>
+                    </div>
+                    <p class="card-desc">Automated CI/CD pipelines, container orchestration, and multi-region cloud resilience.</p>
+                    <div class="skill-pills">
+                        <span class="cyber-pill">Docker</span>
+                        <span class="cyber-pill">Kubernetes</span>
+                        <span class="cyber-pill">AWS / GCP</span>
+                        <span class="cyber-pill">GitHub Actions</span>
+                        <span class="cyber-pill">Terraform</span>
+                        <span class="cyber-pill">Linux Systems</span>
+                    </div>
+                    <div class="card-stat">
+                        <div class="stat-bar"><div class="stat-fill" style="width: 88%;"></div></div>
+                        <span class="stat-label">Proficiency: 88%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directives / Selected Projects Section -->
+        <section id="directives" class="cyber-section">
+            <div class="section-header">
+                <div class="section-tag">// MODULE: 03</div>
+                <h2 class="section-title">ACTIVE_DIRECTIVES [PROJECTS]</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-holo-header">
+                        <span class="project-id">DIR-01 // PRODUCTION</span>
+                        <span class="project-status-pill live">ONLINE</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">PROJECT_SYNAPSE // ENTERPRISE DATA PLATFORM</h3>
+                        <p class="project-desc">
+                            High-scale real-time telemetry processing engine handling 10M+ events daily with sub-50ms latency.
+                            Built with event-driven architecture and automated monitoring.
+                        </p>
+                        <div class="project-tags">
+                            <span>TypeScript</span>
+                            <span>Node.js</span>
+                            <span>Kafka</span>
+                            <span>PostgreSQL</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/yourusername/project-synapse" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>[ SOURCE_CODE ]</span>
+                        </a>
+                        <a href="#" class="project-link primary">
+                            <span>[ LIVE_DEMO &gt;&gt; ]</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-holo-header">
+                        <span class="project-id">DIR-02 // OPEN-SOURCE</span>
+                        <span class="project-status-pill stable">ACTIVE</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">NEO_TERMINAL // DEVELOPER CLI SUITE</h3>
+                        <p class="project-desc">
+                            Zero-configuration terminal utility for microservice orchestration and cloud telemetry visualizers.
+                            Adopted by over 2,500+ active developers in production.
+                        </p>
+                        <div class="project-tags">
+                            <span>Rust</span>
+                            <span>WebAssembly</span>
+                            <span>gRPC</span>
+                            <span>GitHub Actions</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/yourusername/neo-terminal" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>[ SOURCE_CODE ]</span>
+                        </a>
+                        <a href="#" class="project-link primary">
+                            <span>[ RELEASE_DOCS &gt;&gt; ]</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card">
+                    <div class="project-holo-header">
+                        <span class="project-id">DIR-03 // WEB3 / SYSTEM</span>
+                        <span class="project-status-pill prototype">PROTOTYPE</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">CYBER_VAULT // ZERO-KNOWLEDGE AUTH</h3>
+                        <p class="project-desc">
+                            Next-generation decentralized authentication mechanism featuring biometric WebAuthn verification 
+                            and cryptographic session proof generation.
+                        </p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Solidity / ZK</span>
+                            <span>Tailwind</span>
+                            <span>Cloudflare</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/yourusername/cyber-vault" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>[ SOURCE_CODE ]</span>
+                        </a>
+                        <a href="#" class="project-link primary">
+                            <span>[ TESTNET_DEMO &gt;&gt; ]</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Mission Logs / Experience Timeline -->
+        <section id="mission-logs" class="cyber-section">
+            <div class="section-header">
+                <div class="section-tag">// MODULE: 04</div>
+                <h2 class="section-title">CAREER_LOGS [EXPERIENCE]</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-node">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-role">SENIOR SOFTWARE ENGINEER</span>
+                            <span class="timeline-corp">@ CORP_TITAN / TECH LABS</span>
+                            <span class="timeline-time">2024 - PRESENT</span>
+                        </div>
+                        <p class="timeline-body">
+                            Spearheaded core backend optimization and user-facing dashboards, reducing application loading times by 42%. 
+                            Mentored junior developers and led team migration to containerized microservices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-role">FULL-STACK DEVELOPER</span>
+                            <span class="timeline-corp">@ NEURAL INNOVATIONS</span>
+                            <span class="timeline-time">2022 - 2024</span>
+                        </div>
+                        <p class="timeline-body">
+                            Built high-traffic customer portals and automated RESTful API gateways. 
+                            Partnered with product managers to deliver 12 major feature releases ahead of schedule.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-role">SOFTWARE ENGINEERING APPRENTICE</span>
+                            <span class="timeline-corp">@ PROTOCOL SYSTEMS</span>
+                            <span class="timeline-time">2020 - 2022</span>
+                        </div>
+                        <p class="timeline-body">
+                            Contributed to code reviews, implemented unit testing suites achieving 90%+ code coverage, 
+                            and resolved mission-critical bugs across legacy repositories.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comm Link / Interactive Terminal Section -->
+        <section id="comm-link" class="cyber-section">
+            <div class="section-header">
+                <div class="section-tag">// MODULE: 05</div>
+                <h2 class="section-title">COMM_LINK & NEURAL_TERMINAL</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="comm-grid">
+                <!-- Direct Connect Contact Info -->
+                <div class="contact-dossier">
+                    <h3 class="contact-title">// INITIATE DIRECT CONTACT</h3>
+                    <p class="contact-sub">Available for full-time engineering roles, high-impact contracts, and technical leadership.</p>
+
+                    <div class="contact-channels">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="channel-card">
+                            <span class="channel-icon">🔗</span>
+                            <div class="channel-info">
+                                <span class="channel-name">LINKEDIN NETWORK</span>
+                                <span class="channel-value">linkedin.com/in/yourprofile</span>
+                            </div>
+                            <span class="channel-action">&gt;&gt; CONNECT</span>
+                        </a>
+
+                        <a href="mailto:your.email@domain.com" class="channel-card">
+                            <span class="channel-icon">✉️</span>
+                            <div class="channel-info">
+                                <span class="channel-name">ENCRYPTED EMAIL</span>
+                                <span class="channel-value">your.email@domain.com</span>
+                            </div>
+                            <span class="channel-action">&gt;&gt; TRANSMIT</span>
+                        </a>
+
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="channel-card">
+                            <span class="channel-icon">💻</span>
+                            <div class="channel-info">
+                                <span class="channel-name">GITHUB REPOSITORY</span>
+                                <span class="channel-value">github.com/yourusername</span>
+                            </div>
+                            <span class="channel-action">&gt;&gt; INSPECT</span>
+                        </a>
+
+                        <a href="assets/resume.pdf" download class="channel-card featured">
+                            <span class="channel-icon">📄</span>
+                            <div class="channel-info">
+                                <span class="channel-name">CV / RESUME DOSSIER</span>
+                                <span class="channel-value">Curriculum Vitae (PDF Version)</span>
+                            </div>
+                            <span class="channel-action">&gt;&gt; DOWNLOAD</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Cyber Terminal -->
+                <div class="cyber-terminal-card">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">CYBER_CLI // v2.0.4_BETA</span>
+                        <span class="terminal-status">PORT: 8080 [LISTENING]</span>
+                    </div>
+
+                    <div class="terminal-screen" id="terminalScreen">
+                        <div class="term-line output system">// CYBERNETIC COMMAND SHELL INITIALIZED.</div>
+                        <div class="term-line output system">// TYPE <span class="term-cmd-highlight">'help'</span> TO LIST OPERATIONAL COMMANDS.</div>
+                        <div class="term-line output system">// QUICK PRESETS: 
+                            <button class="term-quick-btn" data-cmd="skills">[skills]</button>
+                            <button class="term-quick-btn" data-cmd="contact">[contact]</button>
+                            <button class="term-quick-btn" data-cmd="hire">[hire]</button>
+                            <button class="term-quick-btn" data-cmd="clear">[clear]</button>
+                        </div>
+                        <div id="terminalHistory"></div>
+                    </div>
+
+                    <form class="terminal-input-bar" id="terminalForm">
+                        <span class="term-prompt">user@cyber-portfolio:~$</span>
+                        <input type="text" id="terminalInput" class="term-input" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+                        <button type="submit" class="term-submit">&gt;&gt;</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cyber Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-copy">&copy; <span id="currentYear">2026</span> [YOUR_NAME]. ALL RIGHTS RESERVED.</span>
+                <span class="footer-sec">// PROTOCOL: ZERO-TRUST ARCHITECTURE</span>
+            </div>
+            <div class="footer-right">
+                <a href="#overview" class="footer-back-to-top">[ BACK_TO_TOP ▲ ]</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
